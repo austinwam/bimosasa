@@ -2,8 +2,8 @@ import 'package:bimosasa/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class RecoverPasswordPage extends StatelessWidget {
-  const RecoverPasswordPage({Key? key}) : super(key: key);
+class Resetpasspage extends StatelessWidget {
+  const Resetpasspage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,18 +1,18 @@
+import 'package:bimosasa/pages/conrouter.dart';
 import 'package:bimosasa/provider/provider.dart';
+import 'package:bimosasa/utils/dataformat.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import 'changepass.dart';
-import 'registerpage.dart';
-
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Loginpage extends StatefulWidget {
+  const Loginpage({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Loginpage> createState() => _LoginpageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginpageState extends State<Loginpage> {
   final GlobalKey<FormState> _key = GlobalKey();
 
   String? phone, password;
@@ -55,10 +55,19 @@ class _LoginState extends State<Login> {
                           height: 20,
                         ),
                         TextFormField(
-                            decoration:
-                                const InputDecoration(hintText: 'Mobile'),
+                            decoration: InputDecoration(
+                                helperText: phone != null
+                                    ? "$phone"
+                                    : "enter your phone nu. 254",
+                                hintText: 'mobile 254'),
                             keyboardType: TextInputType.phone,
                             validator: validatephone,
+                            onChanged: (phonev) async {
+                              var sphone = await Dataformat().formphone(phonev);
+                              setState(() {
+                                phone = sphone;
+                              });
+                            },
                             onSaved: (String? val) {
                               phone = val;
                             }),
@@ -98,12 +107,7 @@ class _LoginState extends State<Login> {
                             style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RecoverPasswordPage()),
-                            );
+                            context.goNamed(Apppagename.resetpassword);
                           },
                         ),
                         const SizedBox(height: 20.0),
@@ -139,11 +143,12 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Signup()),
-                            );
+                            context.goNamed(Apppagename.registerpage);
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => const Registerpage()),
+                            // );
                           },
                         ),
                         const SizedBox(height: 20.0),

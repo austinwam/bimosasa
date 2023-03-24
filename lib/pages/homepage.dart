@@ -16,14 +16,6 @@ class Homepage extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
 class Userlist extends StatelessWidget {
   const Userlist({super.key});
 
@@ -31,7 +23,6 @@ class Userlist extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Userprovider>(builder: (context, userdata, _) {
       return Scaffold(
-        // appBar: AppBar(),
         body: SizedBox(
           height: 98.h,
           width: 99.w,

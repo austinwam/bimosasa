@@ -38,12 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class Onbourdpage extends StatelessWidget {
-//   const Onbourdpage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(body: ,);
-//   }
-// }

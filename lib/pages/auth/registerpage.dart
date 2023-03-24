@@ -1,22 +1,24 @@
 import 'package:bimosasa/provider/provider.dart';
 import 'package:bimosasa/utils/dataformat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({super.key});
+class Registerpage extends StatefulWidget {
+  const Registerpage({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<Registerpage> createState() => _RegisterpageState();
 }
 
-class _SignupState extends State<Signup> {
+class _RegisterpageState extends State<Registerpage> {
   String? phone, password, cpassword;
   final GlobalKey<FormState> _key = GlobalKey();
   bool? isvisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Consumer<Authprovider>(builder: (context, authdata, _) {
         if (authdata.isloading == true) {
           return const Center(
@@ -25,47 +27,55 @@ class _SignupState extends State<Signup> {
         } else {
           return Form(
             key: _key,
-            child: Column(
-              children: [
-                TextFormField(
-                    decoration: InputDecoration(
-                        helperText: phone != null
-                            ? "$phone"
-                            : "enter your phone nu. +254",
-                        hintText: 'mobile +254'),
-                    initialValue: "+254",
-                    keyboardType: TextInputType.phone,
-                    validator: validateMobile,
-                    onChanged: (phonev) async {
-                      var sphone = await Dataformat().formphone(phonev);
-
-                      setState(() {
-                        phone = sphone;
-                      });
-                    },
-                    onSaved: (String? val) {
-                      phone = val;
-                    }),
-                const SizedBox(height: 15.0),
-                TextFormField(
-                    decoration: const InputDecoration(hintText: 'password'),
-                    keyboardType: TextInputType.emailAddress,
-                    obscureText: true,
-                    validator: validatepassword,
-                    onSaved: (String? val) {
-                      password = val;
-                    }),
-                const SizedBox(height: 15.0),
-                TextFormField(
-                    decoration:
-                        const InputDecoration(hintText: ' confirm password'),
-                    keyboardType: TextInputType.emailAddress,
-                    obscureText: true,
-                    validator: confirmpassword,
-                    onSaved: (String? val) {
-                      cpassword = val;
-                    }),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  TextFormField(
+                      decoration: InputDecoration(
+                          helperText: phone != null
+                              ? "$phone"
+                              : "enter your phone nu. 254",
+                          hintText: 'mobile 254'),
+                      initialValue: "254",
+                      keyboardType: TextInputType.phone,
+                      validator: validateMobile,
+                      onChanged: (phonev) async {
+                        var sphone = await Dataformat().formphone(phonev);
+                        setState(() {
+                          phone = sphone;
+                        });
+                      },
+                      onSaved: (String? val) {
+                        phone = val;
+                      }),
+                  const SizedBox(height: 15.0),
+                  TextFormField(
+                      decoration: const InputDecoration(hintText: 'password'),
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: true,
+                      validator: validatepassword,
+                      onSaved: (String? val) {
+                        password = val;
+                      }),
+                  const SizedBox(height: 15.0),
+                  TextFormField(
+                      decoration:
+                          const InputDecoration(hintText: 'confirm password'),
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: true,
+                      validator: confirmpassword,
+                      onSaved: (String? val) {
+                        cpassword = val;
+                      }),
+                  const SizedBox(height: 15.0),
+                  MaterialButton(
+                      minWidth: 90.w,
+                      color: Colors.yellow,
+                      child: Text("signup".toUpperCase()),
+                      onPressed: () {})
+                ],
+              ),
             ),
           );
         }

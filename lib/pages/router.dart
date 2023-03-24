@@ -1,3 +1,4 @@
+import 'package:bimosasa/pages/auth/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -5,6 +6,8 @@ import 'package:bimosasa/pages/homepage.dart';
 import 'package:bimosasa/pages/splashpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'auth/changepass.dart';
+import 'auth/registerpage.dart';
 import 'conrouter.dart';
 import 'onboardpage.dart';
 
@@ -18,6 +21,30 @@ class Approuter {
         path: AppPath.homepage,
         builder: (BuildContext context, GoRouterState state) {
           return const Homepage();
+        },
+      ),
+// auth::login
+      GoRoute(
+        name: Apppagename.loginpage,
+        path: AppPath.loginpage,
+        builder: (BuildContext context, GoRouterState state) {
+          return const Loginpage();
+        },
+      ),
+      // register
+      GoRoute(
+        name: Apppagename.registerpage,
+        path: AppPath.registerpage,
+        builder: (BuildContext context, GoRouterState state) {
+          return const Registerpage();
+        },
+      ),
+      // password
+      GoRoute(
+        name: Apppagename.resetpassword,
+        path: AppPath.resetpassword,
+        builder: (BuildContext context, GoRouterState state) {
+          return const Resetpasspage();
         },
       ),
       GoRoute(

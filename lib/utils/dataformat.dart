@@ -4,13 +4,13 @@ class Dataformat {
       String newsv = value.substring(
         1,
       );
-      var phone254 = "+254$newsv";
+      var phone254 = "254$newsv";
       return phone254;
     } else if (value.startsWith("2")) {
       String newsv = value.substring(
         1,
       );
-      var phone254 = "+2$newsv";
+      var phone254 = "2$newsv";
       return phone254;
     }
     return value;
