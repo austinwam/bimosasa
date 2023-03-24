@@ -1,7 +1,6 @@
 import 'package:bimosasa/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//
 
 import 'changepass.dart';
 import 'registerpage.dart';
@@ -182,6 +181,4 @@ class _LoginState extends State<Login> {
     }
     return null;
   }
-
-  _sendToServer() {}
 }
