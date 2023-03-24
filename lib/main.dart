@@ -1,3 +1,4 @@
+import 'package:bimosasa/provider/provider.dart';
 import 'package:bimosasa/provider/userprovider.dart';
 import 'package:bimosasa/router.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Userprovider()),
+        ChangeNotifierProvider(create: (_) => Authprovider()),
       ],
       child: const MyApp(),
     ),

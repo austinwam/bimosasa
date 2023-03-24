@@ -1,5 +1,7 @@
+import 'package:bimosasa/provider/provider.dart';
 import 'package:bimosasa/utils/dataformat.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -15,50 +17,59 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _key,
-        child: Column(
-          children: [
-            TextFormField(
-                decoration: InputDecoration(
-                    helperText:
-                        phone != null ? "$phone" : "enter your phone nu. +254",
-                    hintText: 'mobile +254'),
-                initialValue: "+254",
-                keyboardType: TextInputType.phone,
-                validator: validateMobile,
-                onChanged: (phonev) async {
-                  var sphone = await Dataformat().formphone(phonev);
+      body: Consumer<Authprovider>(builder: (context, authdata, _) {
+        if (authdata.isloading == true) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return Form(
+            key: _key,
+            child: Column(
+              children: [
+                TextFormField(
+                    decoration: InputDecoration(
+                        helperText: phone != null
+                            ? "$phone"
+                            : "enter your phone nu. +254",
+                        hintText: 'mobile +254'),
+                    initialValue: "+254",
+                    keyboardType: TextInputType.phone,
+                    validator: validateMobile,
+                    onChanged: (phonev) async {
+                      var sphone = await Dataformat().formphone(phonev);
 
-                  setState(() {
-                    phone = sphone;
-                  });
-                },
-                onSaved: (String? val) {
-                  phone = val;
-                }),
-            const SizedBox(height: 15.0),
-            TextFormField(
-                decoration: const InputDecoration(hintText: 'password'),
-                keyboardType: TextInputType.emailAddress,
-                obscureText: true,
-                validator: validatepassword,
-                onSaved: (String? val) {
-                  password = val;
-                }),
-            const SizedBox(height: 15.0),
-            TextFormField(
-                decoration:
-                    const InputDecoration(hintText: ' confirm password'),
-                keyboardType: TextInputType.emailAddress,
-                obscureText: true,
-                validator: confirmpassword,
-                onSaved: (String? val) {
-                  cpassword = val;
-                }),
-          ],
-        ),
-      ),
+                      setState(() {
+                        phone = sphone;
+                      });
+                    },
+                    onSaved: (String? val) {
+                      phone = val;
+                    }),
+                const SizedBox(height: 15.0),
+                TextFormField(
+                    decoration: const InputDecoration(hintText: 'password'),
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,
+                    validator: validatepassword,
+                    onSaved: (String? val) {
+                      password = val;
+                    }),
+                const SizedBox(height: 15.0),
+                TextFormField(
+                    decoration:
+                        const InputDecoration(hintText: ' confirm password'),
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,
+                    validator: confirmpassword,
+                    onSaved: (String? val) {
+                      cpassword = val;
+                    }),
+              ],
+            ),
+          );
+        }
+      }),
     );
   }
 

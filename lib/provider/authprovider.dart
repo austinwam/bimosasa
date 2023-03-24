@@ -15,4 +15,10 @@ class Authprovider with ChangeNotifier {
     Authapi().login(phone, password);
     isloading = false;
   }
+
+  Future register(phone, password) async {
+    isloading = true;
+    Authapi().register(phone, password);
+    isloading = false;
+  }
 }
