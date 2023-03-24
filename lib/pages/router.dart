@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:bimosasa/pages/homepage.dart';
 import 'package:bimosasa/pages/splashpage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'conrouter.dart';
 import 'onboardpage.dart';
@@ -20,7 +21,6 @@ class Approuter {
         },
       ),
       GoRoute(
-        // name: Apppages.homepage,
         path: "/user",
         builder: (BuildContext context, GoRouterState state) {
           return const Userdetail();
@@ -54,5 +54,17 @@ class Approuter {
         },
       ),
     ],
+    redirect: (context, state) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      bool? isfirstime = prefs.getBool('firsttime');
+      if (isfirstime == false) {
+        return AppPath.splash;
+      } else if (isfirstime == null) {
+        return AppPath.onbourding;
+      } else {
+        return AppPath.onbourding;
+      }
+    },
   );
 }
