@@ -44,6 +44,9 @@ dependencies:
   aws3_bucket: ^0.0.8
   extended_image: ^7.0.2
   flutter_sizer: ^1.0.5
+  flutter_animate: ^4.1.1+1
+  lottie: ^2.3.0
+  loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
   flutter_test:

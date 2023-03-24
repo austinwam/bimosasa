@@ -1,15 +1,15 @@
 import 'package:bimosasa/provider/provider.dart';
 import 'package:bimosasa/provider/userprovider.dart';
-import 'package:bimosasa/router.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 
+import 'pages/router.dart';
+
 Future<void> main() async {
   runApp(
-    /// Providers are above [MyApp] instead of inside it, so that tests
-    /// can use [MyApp] while mocking the providers
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Userprovider()),
@@ -19,18 +19,6 @@ Future<void> main() async {
     ),
   );
 }
-
-// class MyApp extends StatelessWidget {
-//   /// Constructs a [MyApp]
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp.router(
-//       routerConfig: Approuter().router,
-//     );
-//   }
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -50,3 +38,12 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// class Onbourdpage extends StatelessWidget {
+//   const Onbourdpage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(body: ,);
+//   }
+// }

@@ -73,9 +73,7 @@ class RecoverPasswordPage extends StatelessWidget {
                         GestureDetector(
                           child: Text(
                             "Contact Us".toUpperCase(),
-                            style: const TextStyle(
-                                // color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w600),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                           onTap: () {},
                         ),
@@ -88,7 +86,6 @@ class RecoverPasswordPage extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 20.0),
                   alignment: Alignment.center,
                   height: 100,
-                  // child: Image.asset(logo, fit: BoxFit.contain,)
                 ),
               ],
             ),

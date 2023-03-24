@@ -87,22 +87,15 @@ class _LoginState extends State<Login> {
                                 onPressed: () {
                                   if (_key.currentState!.validate()) {
                                     _key.currentState!.save();
-                                    // Provider.of<Authprovider>(context, listen: false)
-                                    //     .login(context, email, password);
-                                  } else {
-                                    // setState(() {
-                                    //   _validate = true;
-                                    // });
-                                  }
+                                    authdata.login(phone, password);
+                                  } else {}
                                 },
                                 child: Text("Login".toUpperCase()))),
                         const SizedBox(height: 20.0),
                         GestureDetector(
                           child: Text(
                             "Forgot Password".toUpperCase(),
-                            style: const TextStyle(
-                                // color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w600),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                           onTap: () {
                             Navigator.push(
@@ -137,12 +130,10 @@ class _LoginState extends State<Login> {
                           child: SizedBox(
                             width: double.infinity,
                             height: 35,
-                            // color: const Color.fromARGB(95, 199, 49, 49),
                             child: Center(
                               child: Text(
                                 "Create Account".toUpperCase(),
                                 style: const TextStyle(
-                                    // color: Theme.of(context).primaryColor,
                                     fontWeight: FontWeight.w600),
                               ),
                             ),

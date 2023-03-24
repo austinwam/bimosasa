@@ -1,9 +1,11 @@
-import 'package:bimosasa/pages/homepage.dart';
-import 'package:bimosasa/pages/splashpage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:bimosasa/pages/homepage.dart';
+import 'package:bimosasa/pages/splashpage.dart';
+
 import 'conrouter.dart';
+import 'onboardpage.dart';
 
 class Approuter {
   final GoRouter router = GoRouter(
@@ -17,7 +19,7 @@ class Approuter {
           return const Homepage();
         },
       ),
-          GoRoute(
+      GoRoute(
         // name: Apppages.homepage,
         path: "/user",
         builder: (BuildContext context, GoRouterState state) {
@@ -44,6 +46,13 @@ class Approuter {
           builder: (BuildContext context, GoRouterState state) {
             return const Splashpage();
           }),
+      GoRoute(
+        name: Apppages.onbourding,
+        path: AppPath.onbourding,
+        builder: (BuildContext context, GoRouterState state) {
+          return const OnBoardingPage();
+        },
+      ),
     ],
   );
 }
