@@ -28,9 +28,11 @@ class MyApp extends StatelessWidget {
     return FlutterSizer(
       builder: (context, orientation, screenType) {
         return MaterialApp.router(
-          title: 'Flutter Sizer Example',
+          title: 'bimosasa',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primaryColor: Colors.black54,
+            appBarTheme:
+                const AppBarTheme(color: Color.fromARGB(137, 176, 47, 47)),
           ),
           routerConfig: Approuter().router,
         );
