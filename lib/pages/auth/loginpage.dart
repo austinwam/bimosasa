@@ -85,7 +85,17 @@ class _LoginState extends State<Login> {
                             width: double.infinity,
                             child: MaterialButton(
                                 color: Colors.yellow,
-                                onPressed: _sendToServer,
+                                onPressed: () {
+                                  if (_key.currentState!.validate()) {
+                                    _key.currentState!.save();
+                                    // Provider.of<Authprovider>(context, listen: false)
+                                    //     .login(context, email, password);
+                                  } else {
+                                    // setState(() {
+                                    //   _validate = true;
+                                    // });
+                                  }
+                                },
                                 child: Text("Login".toUpperCase()))),
                         const SizedBox(height: 20.0),
                         GestureDetector(
@@ -173,15 +183,5 @@ class _LoginState extends State<Login> {
     return null;
   }
 
-  _sendToServer() {
-    if (_key.currentState!.validate()) {
-      _key.currentState!.save();
-      // Provider.of<Authprovider>(context, listen: false)
-      //     .login(context, email, password);
-    } else {
-      // setState(() {
-      //   _validate = true;
-      // });
-    }
-  }
+  _sendToServer() {}
 }
