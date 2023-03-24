@@ -1,8 +1,11 @@
+import 'package:bimosasa/utils/sharepref.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:lottie/lottie.dart';
+
+import 'conrouter.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -73,8 +76,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             color: Colors.yellow,
                             child: const Text("Continue"),
                             onPressed: () {
-                              
-                              requestperm(context);
+                              Storedata().adddata(
+                                  Kind.abool.text, Data.firsttime.text, false);
+                              context.goNamed(Apppagename.splash);
                             },
                           ),
                         ),
@@ -89,11 +93,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
       ),
     );
-  }
-
-  Future<void> requestperm(context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('firsttime', false);
   }
 
   AnimatedContainer buildDot({int? index}) {

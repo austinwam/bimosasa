@@ -1,4 +1,4 @@
-class Apppages {
+class Apppagename {
   static String onbourding = "onbourd";
   static String splash = "splash";
   static String loginpage = "login";

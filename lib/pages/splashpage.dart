@@ -19,7 +19,8 @@ class _SplashpageState extends State<Splashpage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       Provider.of<Userprovider>(context, listen: false).getusers();
       Future.delayed(const Duration(seconds: 3), () {
-        context.goNamed(Apppages.homepage);
+    
+        context.goNamed(AppPath.homepage);
       });
     });
   }
@@ -32,7 +33,10 @@ class _SplashpageState extends State<Splashpage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Center(
-            child: CircularProgressIndicator(),
+            child: Icon(
+              Icons.abc,
+              size: 80,
+            ),
           ),
         ],
       ),

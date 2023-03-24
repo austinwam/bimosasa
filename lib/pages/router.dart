@@ -14,7 +14,7 @@ class Approuter {
     debugLogDiagnostics: true,
     routes: <RouteBase>[
       GoRoute(
-        name: Apppages.homepage,
+        name: Apppagename.homepage,
         path: AppPath.homepage,
         builder: (BuildContext context, GoRouterState state) {
           return const Homepage();
@@ -35,19 +35,19 @@ class Approuter {
         },
       ),
       GoRoute(
-          name: Apppages.splash,
+          name: Apppagename.splash,
           path: AppPath.splash,
           builder: (BuildContext context, GoRouterState state) {
             return const Splashpage();
           }),
       GoRoute(
-          name: Apppages.settingpage,
+          name: Apppagename.settingpage,
           path: AppPath.settingpage,
           builder: (BuildContext context, GoRouterState state) {
             return const Splashpage();
           }),
       GoRoute(
-        name: Apppages.onbourding,
+        name: Apppagename.onbourding,
         path: AppPath.onbourding,
         builder: (BuildContext context, GoRouterState state) {
           return const OnBoardingPage();
@@ -56,15 +56,29 @@ class Approuter {
     ],
     redirect: (context, state) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-
       bool? isfirstime = prefs.getBool('firsttime');
-      if (isfirstime == false) {
-        return AppPath.splash;
-      } else if (isfirstime == null) {
-        return AppPath.onbourding;
-      } else {
+      if (isfirstime == null) {
         return AppPath.onbourding;
       }
+      return null;
     },
   );
 }
+
+/*
+states
+1. onbouding
+2. splash
+
+
+isauth
+
+completed auth
+adduser
+kyc
+
+homepage
+
+
+*/
+enum Appstate { red, green, blue }

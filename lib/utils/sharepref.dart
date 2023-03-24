@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
+
 /**
- 
 datatype=[int,string, bool]
  
  data
@@ -12,8 +12,17 @@ datatype=[int,string, bool]
  5.userimage
  6.userstate
  7.phone
-
  **/
+
+enum Data {
+  firsttime("firsttime"),
+  isauth("isauth"),
+  userdata("userdata"),
+  token("token");
+
+  final String text;
+  const Data(this.text);
+}
 
 enum Kind {
   aint("int"),
