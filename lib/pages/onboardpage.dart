@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bimosasa/utils/sharepref.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -77,7 +79,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             child: const Text("Continue"),
                             onPressed: () {
                               Storedata().adddata(
-                                  Kind.abool.text, Data.firsttime.text, false);
+                                  Kind.abool.text, Data.firsttime.text, true);
                               context.goNamed(Apppagename.splash);
                             },
                           ),

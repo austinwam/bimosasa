@@ -34,13 +34,13 @@ enum Kind {
 }
 
 class Storedata {
-  Future<dynamic> adddata(kind, datatype, data) async {
+  Future<dynamic> adddata(type, datatype, data) async {
     final prefs = await SharedPreferences.getInstance();
-    if (Kind.aint.text == kind) {
-      prefs.setInt(datatype, data);
-    } else if (Kind.astring.text == kind) {
-      prefs.setInt(datatype, data);
-    } else if (Kind.aint.text == kind) {
+    if (Kind.abool.text == type) {
+      prefs.setBool(datatype, data);
+    } else if (Kind.astring.text == type) {
+      prefs.setString(datatype, data);
+    } else if (Kind.aint.text == type) {
       prefs.setInt(datatype, data);
     } else {
       print("an error happed");

@@ -1,4 +1,5 @@
 import 'package:bimosasa/provider/userprovider.dart';
+import 'package:bimosasa/utils/sharepref.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -21,10 +22,15 @@ class _SplashpageState extends State<Splashpage> {
       Provider.of<Userprovider>(context, listen: false).getusers();
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      var isauth = prefs.getBool('isauth');
+      bool? isauth = prefs.getBool('isauth');
+      var isfirsttime = await Storedata().getdata(bool, Data.firsttime.text);
       Future.delayed(const Duration(seconds: 3), () {
         if (isauth == null || isauth == false) {
-          context.goNamed(Apppagename.loginpage);
+          if (isfirsttime == true) {
+            context.goNamed(Apppagename.loginpage);
+          } else {
+            context.goNamed(Apppagename.registerpage);
+          }
         } else {
           context.goNamed(AppPath.homepage);
         }
